@@ -1,0 +1,20 @@
+services:
+  database:
+    image: postgres:15.4
+    ports:
+      - 5433:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=koko
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=weatherdb
+    networks:
+      - db
+
+networks:
+  db:
+    driver: bridge
+
+volumes:
+  pgdata:
